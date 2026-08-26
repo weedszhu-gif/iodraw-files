@@ -1,0 +1,449 @@
+<mxfile host="app.diagrams.net" modified="2026-08-26T00:00:00.000Z" agent="OpenClaw" version="24.7.17" type="device">
+  <diagram id="ai-data-architecture" name="AI数据底座架构">
+    <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1540" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- ========== 标题 ========== -->
+        <mxCell id="title" value="AI 数据底座架构总览" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="370" y="20" width="800" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="数据源 → 采集容灾 → MCP标准化 → Agent应用 ｜ 核心理念：水源管线 — 先建数据管线，再谈AI能力" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=13;fontColor=#6B7280;" vertex="1" parent="1">
+          <mxGeometry x="270" y="62" width="1000" height="28" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== 核心理念条 ========== -->
+        <mxCell id="philosophy" value="核心理念：水源管线 — 先建数据管线，再谈AI能力，没有高质量数据就没有准确判断" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBE9E7;strokeColor=#D84315;strokeWidth=2;fontSize=13;fontStyle=2;fontColor=#BF360C;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="50" y="100" width="1440" height="35" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== ① 数据源层 ========== -->
+        <mxCell id="src-label" value="① 数据源层（异构多平台）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=1;fontColor=#E65100;" vertex="1" parent="1">
+          <mxGeometry x="50" y="150" width="300" height="28" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 1: 7 data sources -->
+        <mxCell id="src-firewall" value="防火墙&#xa;山石/QoS策略" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=12;fontStyle=1;fontColor=#E65100;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="50" y="185" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="src-elk" value="ELK&#xa;日志检索" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=12;fontStyle=1;fontColor=#E65100;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="250" y="185" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="src-zabbix" value="Zabbix&#xa;IDC监控" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=12;fontStyle=1;fontColor=#E65100;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="450" y="185" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="src-servicetree" value="服务树/容器平台&#xa;服务拓扑" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=12;fontStyle=1;fontColor=#E65100;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="650" y="185" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="src-aliyun" value="阿里云&#xa;NAT/VBR/带宽" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=12;fontStyle=1;fontColor=#E65100;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="850" y="185" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="src-tencent" value="腾讯云&#xa;容量/带宽" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=12;fontStyle=1;fontColor=#E65100;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="185" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="src-librenms" value="LibreNMS&#xa;VRF下IP采集" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=12;fontStyle=1;fontColor=#E65100;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="185" width="180" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 2: 3 more data sources -->
+        <mxCell id="src-pingmesh" value="Ping Mesh&#xa;27节点互ping矩阵" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=11;fontColor=#E65100;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="50" y="250" width="180" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="src-blacklist" value="动态黑名单平台&#xa;simple/precise匹配" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=11;fontColor=#E65100;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="250" y="250" width="180" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="src-n9e" value="夜莺 N9E&#xa;双活监控告警" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=2;fontSize=11;fontColor=#E65100;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="450" y="250" width="180" height="42" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== ② 采集与容灾层 ========== -->
+        <mxCell id="col-label" value="② 采集与六模块容灾层" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=1;fontColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="50" y="310" width="300" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="col-subtitle" value="18h整机中断实弹验证通过" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontStyle=2;fontColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="350" y="313" width="250" height="22" as="geometry"/>
+        </mxCell>
+
+        <!-- Collect Row 1: 6 modules -->
+        <mxCell id="col-categraf" value="Categraf×27双发&#xa;VM双写采集" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;fontSize=11;fontColor=#1565C0;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="50" y="345" width="220" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="col-haproxy" value="HAProxy查询中转&#xa;双站failover" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;fontSize=11;fontColor=#1565C0;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="290" y="345" width="220" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="col-mysql" value="MySQL GTID主从&#xa;super_read_only" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;fontSize=11;fontColor=#1565C0;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="530" y="345" width="220" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="col-redis" value="Redis Sentinel&#xa;quorum=1+守护脚本" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;fontSize=11;fontColor=#1565C0;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="770" y="345" width="220" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="col-sync" value="配置同步&#xa;rsync+sed+profiles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;fontSize=11;fontColor=#1565C0;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="345" width="220" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="col-backfill" value="数据回填&#xa;1h分批+reverse" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;fontSize=11;fontColor=#1565C0;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="345" width="220" height="48" as="geometry"/>
+        </mxCell>
+
+        <!-- Collect Row 2 -->
+        <mxCell id="col-cloudapi" value="云厂商API采集（自建体系，不依赖云告警推送）&#xa;腾讯云API调用降低30%，阿里云security账号指标降低65%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;fontSize=11;fontColor=#1565C0;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="290" y="405" width="460" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="col-grafana" value="Grafana面板&#xa;Ping Mesh多级跳转 / QoS超发率自动计算" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;fontSize=11;fontColor=#1565C0;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="770" y="405" width="460" height="48" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== ③ MCP工具层 ========== -->
+        <mxCell id="mcp-label" value="③ MCP工具层（7个标准化接口）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=1;fontColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="50" y="470" width="350" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="mcp-subtitle" value="异构数据源封装为Agent标准接口，AI自然语言一键调用" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontStyle=2;fontColor=#2E7D32;" vertex="1" parent="1">
+          <mxGeometry x="430" y="473" width="400" height="22" as="geometry"/>
+        </mxCell>
+
+        <!-- MCP Tools: 7 boxes -->
+        <mxCell id="mcp1" value="① QoS配置查询&#xa;← 防火墙/腾讯云" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=2;fontSize=11;fontColor=#2E7D32;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="50" y="505" width="190" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="mcp2" value="② Session Top&#xa;← 夜莺N9E" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=2;fontSize=11;fontColor=#2E7D32;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="255" y="505" width="190" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="mcp3" value="③ 公网IP超限&#xa;← 阿里云" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=2;fontSize=11;fontColor=#2E7D32;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="460" y="505" width="190" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="mcp4" value="④ ELK日志检索&#xa;← ELK" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=2;fontSize=11;fontColor=#2E7D32;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="665" y="505" width="190" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="mcp5" value="⑤ IP归属查询&#xa;← 服务树/LibreNMS/防火墙" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=2;fontSize=10;fontColor=#2E7D32;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="870" y="505" width="200" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="mcp6" value="⑥ 流量环比&#xa;← 阿里云/腾讯云" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=2;fontSize=11;fontColor=#2E7D32;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1085" y="505" width="190" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="mcp7" value="⑦ 告警历史&#xa;← 夜莺/黑名单/Zabbix" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=2;fontSize=10;fontColor=#2E7D32;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="505" width="200" height="48" as="geometry"/>
+        </mxCell>
+
+        <!-- Standard Layer -->
+        <mxCell id="mcp-standard" value="标准化封装层 — 统一数据输出格式，Agent标准接口" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=2;fontSize=13;fontStyle=1;fontColor=#1B5E20;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="350" y="565" width="840" height="36" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== ④ AI/Agent应用层 ========== -->
+        <mxCell id="ai-label" value="④ AI/Agent应用层" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=1;fontColor=#6A1B9A;" vertex="1" parent="1">
+          <mxGeometry x="50" y="620" width="300" height="28" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ai-agent" value="Agent&#xa;自然语言→MCP调用&#xa;无需了解底层系统差异" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;strokeWidth=2;fontSize=12;fontStyle=1;fontColor=#4A148C;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="200" y="655" width="250" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ai-fault" value="AI故障定位&#xa;多源联合查询&#xa;跨平台数据关联分析" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;strokeWidth=2;fontSize=12;fontStyle=1;fontColor=#4A148C;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="600" y="655" width="250" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ai-dashboard" value="AI辅助看板&#xa;复杂联合查询语句&#xa;Grafana多级跳转" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;strokeWidth=2;fontSize=12;fontStyle=1;fontColor=#4A148C;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="655" width="250" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== ⑤ 未来规划 ========== -->
+        <mxCell id="future-label" value="⑤ 未来规划" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=15;fontStyle=1;fontColor=#546E7A;" vertex="1" parent="1">
+          <mxGeometry x="50" y="735" width="200" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="future-box" value="• 云上账号覆盖扩展，统一数据输出格式，推动更多非平台化数据MCP化&#xa;• 建设专线/云上资源成本看板，整合统一巡检视图，推进IP地址利用率分析&#xa;• 动态黑名单完善，推动告警聚合方案（消息队列/开源告警收敛），网络侧告警进一步治理&#xa;• 评估Zabbix迁移夜莺统一平台，关注夜莺AI功能适配&#xa;• AI故障定位准确率量化评估机制" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECEFF1;strokeColor=#546E7A;strokeWidth=1.5;fontSize=11;fontColor=#455A64;arcSize=6;align=left;spacingLeft=10;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="50" y="770" width="1440" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== 图例 ========== -->
+        <mxCell id="legend-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#CCCCCC;strokeWidth=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="50" y="870" width="1100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-title" value="图例：" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="873" width="50" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="lg1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF9800;strokeWidth=1.5;arcSize=2;" vertex="1" parent="1">
+          <mxGeometry x="110" y="877" width="14" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="lg1t" value="数据源" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="128" y="873" width="50" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="lg2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=1.5;arcSize=2;" vertex="1" parent="1">
+          <mxGeometry x="185" y="877" width="14" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="lg2t" value="采集容灾" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="203" y="873" width="60" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="lg3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=1.5;arcSize=2;" vertex="1" parent="1">
+          <mxGeometry x="270" y="877" width="14" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="lg3t" value="MCP工具" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="288" y="873" width="60" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="lg4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;strokeWidth=1.5;arcSize=2;" vertex="1" parent="1">
+          <mxGeometry x="355" y="877" width="14" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="lg4t" value="AI/Agent" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="373" y="873" width="60" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="lg5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FBE9E7;strokeColor=#D84315;strokeWidth=1.5;arcSize=2;" vertex="1" parent="1">
+          <mxGeometry x="440" y="877" width="14" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="lg5t" value="核心理念" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="458" y="873" width="60" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="lg6" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECEFF1;strokeColor=#546E7A;strokeWidth=1.5;arcSize=2;" vertex="1" parent="1">
+          <mxGeometry x="525" y="877" width="14" height="14" as="geometry"/>
+        </mxCell>
+        <mxCell id="lg6t" value="未来规划" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="543" y="873" width="60" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="lg7" value="━━ 曲线 = 数据流向（贝塞尔曲线，中间点弯曲避让）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=10;fontColor=#888;" vertex="1" parent="1">
+          <mxGeometry x="610" y="873" width="400" height="22" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== 连接线：数据源 → MCP（橙色曲线） ========== -->
+        <!-- 防火墙(140,235) → MCP①(145,505) -->
+        <mxCell id="c1" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#FF9800;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="src-firewall" target="mcp1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="140" y="300"/>
+              <mxPoint x="145" y="400"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 防火墙 → MCP⑤ IP归属 -->
+        <mxCell id="c2" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#FF9800;strokeWidth=1.5;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="src-firewall" target="mcp5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="300"/>
+              <mxPoint x="850" y="400"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- ELK → MCP④ -->
+        <mxCell id="c3" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#FF9800;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="src-elk" target="mcp4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="300"/>
+              <mxPoint x="760" y="400"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- Zabbix → MCP⑦ -->
+        <mxCell id="c4" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#FF9800;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="src-zabbix" target="mcp7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="300"/>
+              <mxPoint x="1390" y="400"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 服务树 → MCP⑤ -->
+        <mxCell id="c5" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#FF9800;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="src-servicetree" target="mcp5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="300"/>
+              <mxPoint x="850" y="400"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 阿里云 → MCP③ -->
+        <mxCell id="c6" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#FF9800;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="src-aliyun" target="mcp3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="940" y="300"/>
+              <mxPoint x="555" y="400"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 阿里云 → MCP⑥ -->
+        <mxCell id="c7" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#FF9800;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="src-aliyun" target="mcp6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="940" y="300"/>
+              <mxPoint x="1180" y="400"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 腾讯云 → MCP① -->
+        <mxCell id="c8" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#FF9800;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="src-tencent" target="mcp1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1050" y="400"/>
+              <mxPoint x="500" y="450"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 腾讯云 → MCP⑥ -->
+        <mxCell id="c9" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#FF9800;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="src-tencent" target="mcp6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1140" y="300"/>
+              <mxPoint x="1180" y="400"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- LibreNMS → MCP⑤ -->
+        <mxCell id="c10" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#FF9800;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="src-librenms" target="mcp5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1340" y="400"/>
+              <mxPoint x="1080" y="450"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Ping Mesh → Grafana -->
+        <mxCell id="c11" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#FF9800;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="src-pingmesh" target="col-grafana">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="140" y="320"/>
+              <mxPoint x="770" y="420"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 夜莺 → MCP② -->
+        <mxCell id="c12" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#FF9800;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="src-n9e" target="mcp2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="320"/>
+              <mxPoint x="350" y="400"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 夜莺 → MCP⑦ -->
+        <mxCell id="c13" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#FF9800;strokeWidth=1.5;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="src-n9e" target="mcp7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="400"/>
+              <mxPoint x="1290" y="450"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 黑名单 → MCP⑦ -->
+        <mxCell id="c14" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#FF9800;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="src-blacklist" target="mcp7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="340" y="320"/>
+              <mxPoint x="1290" y="450"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ========== 连接线：采集容灾层内部（蓝色曲线） ========== -->
+        <!-- Categraf → 夜莺N9E -->
+        <mxCell id="c15" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#1976D2;strokeWidth=1.5;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="col-categraf" target="src-n9e">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="350" y="320"/>
+              <mxPoint x="450" y="292"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- HAProxy → 夜莺 -->
+        <mxCell id="c16" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#1976D2;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="col-haproxy" target="src-n9e">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="320"/>
+              <mxPoint x="540" y="292"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 云API → 阿里云 -->
+        <mxCell id="c17" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#1976D2;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="col-cloudapi" target="src-aliyun">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="320"/>
+              <mxPoint x="940" y="235"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 云API → 腾讯云 -->
+        <mxCell id="c18" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#1976D2;strokeWidth=1.5;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="col-cloudapi" target="src-tencent">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="800" y="350"/>
+              <mxPoint x="1140" y="235"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 配置同步 → Redis Sentinel -->
+        <mxCell id="c19" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#1976D2;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="col-sync" target="col-redis">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1000" y="340"/>
+              <mxPoint x="1000" y="340"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <!-- 数据回填 → Categraf（底部曲线绕行） -->
+        <mxCell id="c20" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#1976D2;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="col-backfill" target="col-categraf">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1360" y="430"/>
+              <mxPoint x="1360" y="460"/>
+              <mxPoint x="30" y="460"/>
+              <mxPoint x="30" y="369"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ========== 连接线：MCP → 标准化层（绿色曲线） ========== -->
+        <mxCell id="c21" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#4CAF50;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="mcp1" target="mcp-standard">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="c22" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#4CAF50;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.15;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="mcp2" target="mcp-standard">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="c23" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#4CAF50;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="mcp3" target="mcp-standard">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="c24" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#4CAF50;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="mcp4" target="mcp-standard">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="c25" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#4CAF50;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.7;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="mcp5" target="mcp-standard">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="c26" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#4CAF50;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.85;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="mcp6" target="mcp-standard">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="c27" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#4CAF50;strokeWidth=1.5;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="mcp7" target="mcp-standard">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== 连接线：标准化 → AI层（紫色曲线） ========== -->
+        <mxCell id="c28" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#7B1FA2;strokeWidth=2;endArrow=block;endFill=1;exitX=0.15;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="mcp-standard" target="ai-agent">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="475" y="620"/>
+              <mxPoint x="325" y="640"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c29" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#7B1FA2;strokeWidth=2;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="mcp-standard" target="ai-fault">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="770" y="620"/>
+              <mxPoint x="725" y="640"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c30" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#7B1FA2;strokeWidth=2;endArrow=block;endFill=1;exitX=0.85;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="mcp-standard" target="ai-dashboard">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1065" y="620"/>
+              <mxPoint x="1125" y="640"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- AI internal connections -->
+        <mxCell id="c31" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#7B1FA2;strokeWidth=1.5;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ai-agent" target="ai-fault">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="c32" style="edgeStyle=orthogonalEdgeStyle;curved=1;strokeColor=#7B1FA2;strokeWidth=1.5;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ai-fault" target="ai-dashboard">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
